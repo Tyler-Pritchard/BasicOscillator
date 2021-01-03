@@ -54,7 +54,10 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
 private:
-    juce::dsp::Oscillator<float> osc { [](float x) {return std::sin (x); }};
+    juce::dsp::Oscillator<float> osc { [](float x) {return x / juce::MathConstants<float>::pi; }, 200 }; //saw wave
+//    juce::dsp::Oscillator<float> osc { [](float x) {return std::sin (x); }}; //sine wave
+//    juce::dsp::Oscillator<float> osc { [](float x) {return x < 0.0f ? -1.0f : 1.0f; }};
+
     juce::dsp::Gain<float> gain;
     
     //==============================================================================
